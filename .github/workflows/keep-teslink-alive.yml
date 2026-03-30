@@ -2,8 +2,7 @@ name: Keep TesLink Alive
 
 on:
   schedule:
-    - cron: '3,10,17,24,31,38,45,52,59 21-23 * * *'
-    - cron: '3,10,17,24,31,38,45,52,59 0-16 * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 concurrency:
