@@ -1,11 +1,6 @@
 name: Keep TesLink Alive
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/workflows/keep-teslink-alive.yml'
   schedule:
     - cron: '3,10,17,24,31,38,45,52,59 21-23 * * *'
     - cron: '3,10,17,24,31,38,45,52,59 0-16 * * *'
