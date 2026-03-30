@@ -1,0 +1,25 @@
+name: Keep TesLink Alive
+
+on:
+  schedule:
+    - cron: '2,12,22,32,42,52 23 * * *'
+    - cron: '2,12,22,32,42,52 0-14 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: keep-teslink-alive
+  cancel-in-progress: true
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Ping health endpoint
+        run: |
+          curl -fsS \
+            --retry 2 \
+            --retry-delay 5 \
+            --max-time 20 \
+            -H "User-Agent: TesLink-KeepAlive/1.0" \
+            "https://teslink.onrender.com/api/health"
